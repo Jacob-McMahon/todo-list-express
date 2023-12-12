@@ -11,31 +11,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
+<!--what we will actually see-->
 <body>
+    <!--the main header-->
     <h1>Todo List: </h1>
+    <!--setting up an un organized list of of task to be completed-->
     <ul class="todoItems">
+        <!--adding some js so that we can go add everything in our db list to the page-->
     <% for(let i=0; i < items.length; i++) {%>
+        <!--1st list item, with js that checks if the item is marked as completed
+            if it is check it off other wise just add the thing its self-->
         <li class="item">
             <% if(items[i].completed === true) {%>
                 <span class='completed'><%= items[i].thing %></span>
             <% }else{ %>
                 <span><%= items[i].thing %></span>
             <% } %>    
+            <!--add an icon of trash can to be able to delete it with our js-->
             <span class='fa fa-trash'></span>
         </li>
+        <!--close the js-->
     <% } %>
     </ul>
-
+    <!--second header for tasks left to do-->
     <h2>Left to do: <%= left %></h2>
-
+    <!--another second header to add new tasks to our list-->
     <h2>Add A Todo:</h2>
 
+    <!-- a form for adding new tasks with an input field for the item to do and an
+        input to submit said task-->
     <form action="/addTodo" method="POST">
         <input type="text" placeholder="Thing To Do" name="todoItem">
         <input type="submit">
     </form>
     
-
+    <!--linking our js to our page-->
     <script src='js/main.js'></script>
 </body>
 </html>
